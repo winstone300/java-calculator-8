@@ -10,8 +10,9 @@ public class Seperator {
 
     public int run(String sentence){
         if(sentence.startsWith(pre)){
-            char newsepChar = sentence.charAt(sentence.indexOf(pre)+pre.length());
-            sepChars.add(newsepChar);
+            String newsepChar = sentence.substring(sentence.indexOf(pre)+pre.length(),sentence.indexOf(post));
+            if(newsepChar.equals("")) throw new IllegalArgumentException("입력된 구분자가 없습니다.");
+            sepChars.add(newsepChar.charAt(0));
             return sepAdd(sentence.substring(sentence.indexOf(post)+post.length()));
         }
         return sepAdd(sentence);
