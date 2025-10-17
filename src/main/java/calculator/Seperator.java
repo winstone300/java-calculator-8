@@ -31,6 +31,7 @@ public class Seperator {
                 nowNum = 0;
                 continue;
             }
+            if(!Character.isDigit(temp)) throw new IllegalArgumentException("올바른 입력이 아닙니다.");
 
             nowNum*=10;
             tempInt = temp - '0';
