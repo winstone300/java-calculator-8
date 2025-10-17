@@ -5,8 +5,17 @@ import java.util.List;
 
 public class Seperator {
     private static  String pre = "//";
-    private static String post = "\n";
-    private static ArrayList<Character> sepChars = new ArrayList<Character>(List.of(',',';'));
+    private static String post = "\\n";
+    private static ArrayList<Character> sepChars = new ArrayList<Character>(List.of(',',':'));
+
+    public int run(String sentence){
+        if(sentence.startsWith(pre)){
+            char newsepChar = sentence.charAt(sentence.indexOf(pre)+pre.length());
+            sepChars.add(newsepChar);
+            return sepAdd(sentence.substring(sentence.indexOf(post)+post.length()));
+        }
+        return sepAdd(sentence);
+    }
 
     public int sepAdd(String sentence){
         int ans = 0;

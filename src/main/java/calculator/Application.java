@@ -9,7 +9,7 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         String sentence = Console.readLine();
-        int ans = seperator.sepAdd(sentence);
+        int ans = seperator.run(sentence);
         System.out.println("결과 : " + ans);
     }
 }
