@@ -9,11 +9,13 @@ public class Seperator {
     private static ArrayList<Character> sepChars = new ArrayList<Character>(List.of(',',':'));
 
     public int run(String sentence){
-        if(sentence.startsWith(pre)){
-            String newsepChar = sentence.substring(sentence.indexOf(pre)+pre.length(),sentence.indexOf(post));
-            if(newsepChar.equals("")) throw new IllegalArgumentException("입력된 구분자가 없습니다.");
-            sepChars.add(newsepChar.charAt(0));
-            return sepAdd(sentence.substring(sentence.indexOf(post)+post.length()));
+        if(sentence.contains(pre)){
+            if(sentence.startsWith(pre)&&sentence.contains(post)){
+                String newsepChar = sentence.substring(sentence.indexOf(pre)+pre.length(),sentence.indexOf(post));
+                if(newsepChar.equals("")) throw new IllegalArgumentException("입력된 구분자가 없습니다.");
+                sepChars.add(newsepChar.charAt(0));
+                return sepAdd(sentence.substring(sentence.indexOf(post)+post.length()));
+            }else throw new IllegalArgumentException();
         }
         return sepAdd(sentence);
     }
