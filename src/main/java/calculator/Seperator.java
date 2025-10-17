@@ -33,6 +33,7 @@ public class Seperator {
 
             nowNum*=10;
             tempInt = temp - '0';
+            if(tempInt <= 0) throw new IllegalArgumentException("입력된 수가 양수가 아닙니다.");
 
             nowNum+=tempInt;
         }
