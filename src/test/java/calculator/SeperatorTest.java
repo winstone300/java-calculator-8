@@ -14,7 +14,7 @@ public class SeperatorTest extends NsTest {
     @Test
     void 빈_문자열() {
         assertSimpleTest(() -> {
-            run("");
+            run("\n");
             assertThat(output()).contains("결과 : 0");
         });
     }
