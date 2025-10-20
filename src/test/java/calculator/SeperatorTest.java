@@ -114,6 +114,7 @@ public class SeperatorTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    
 
     @Override
     public void runMain() {

@@ -38,30 +38,35 @@ public class Seperator {
     public int sum(String sentence, Set<Character> seps) {
         int ans = 0;
         int nowNum = 0;
+        boolean check = false;
 
         for (int i = 0; i < sentence.length(); i++) {
             char temp = sentence.charAt(i);
-            int tempInt;
 
             if (seps.contains(temp)) {
-                ans += nowNum;
-                nowNum = 0;
+                if (check) {
+                    validate(nowNum);
+                    ans += nowNum;
+                    nowNum = 0;
+                    check = false;
+                }
                 continue;
             }
             if (!Character.isDigit(temp)) {
                 throw new IllegalArgumentException("올바른 입력이 아닙니다.");
             }
 
-            nowNum *= 10;
-            tempInt = temp - '0';
-            if (tempInt <= 0) {
-                throw new IllegalArgumentException("입력된 수가 양수가 아닙니다.");
-            }
-
-            nowNum += tempInt;
+            nowNum = nowNum * 10 + (temp - '0');
+            check = true;
         }
         ans += nowNum;
 
         return ans;
+    }
+
+    public void validate(int num) {
+        if (num <= 0) {
+            throw new IllegalArgumentException("입력된 수가 양수가 아닙니다.");
+        }
     }
 }
